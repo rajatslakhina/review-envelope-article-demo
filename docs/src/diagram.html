@@ -1,0 +1,29 @@
+<html><body style="margin:0;width:1600px;height:900px;background:#ffffff;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;color:#0f172a;position:relative">
+<div style="position:absolute;left:60px;top:40px;font-size:40px;font-weight:800">One remote change, four possible verdicts</div>
+<div style="position:absolute;left:60px;top:98px;font-size:24px;color:#475569">ReviewEnvelope: what the server may change, checked against what App Review was told</div>
+<div style="position:absolute;left:60px;top:170px;width:330px">
+ <div style="font-size:22px;font-weight:700;color:#475569;margin-bottom:14px">SERVER CAN CHANGE</div>
+ <div style="display:flex;flex-direction:column;gap:14px;font-size:24px;font-family:Menlo,monospace">
+  <div style="border:2px solid #cbd5e1;border-radius:12px;padding:14px">system prompt</div>
+  <div style="border:2px solid #cbd5e1;border-radius:12px;padding:14px">tool list</div>
+  <div style="border:2px solid #cbd5e1;border-radius:12px;padding:14px">data scopes</div>
+  <div style="border:2px solid #cbd5e1;border-radius:12px;padding:14px">model tier</div>
+  <div style="border:2px solid #cbd5e1;border-radius:12px;padding:14px">flags</div>
+ </div></div>
+<div style="position:absolute;left:400px;top:400px;font-size:60px;color:#94a3b8">→</div>
+<div style="position:absolute;left:480px;top:200px;width:420px;height:420px;border-radius:20px;background:#0f172a;color:#f8fafc;padding:28px;box-sizing:border-box">
+ <div style="font-family:Menlo,monospace;font-size:28px;font-weight:700;color:#38bdf8">EnvelopeClassifier</div>
+ <div style="font-size:22px;margin-top:18px;line-height:1.5;color:#cbd5e1">compares the proposal with the <b style="color:#fff">3.2 manifest</b>:<br>• declared tool / scope / tier?<br>• flag bound to declared capabilities?<br>• prompt names undeclared tools?<br>• version bump, changelog, eval vs baseline?</div>
+ <div style="font-size:20px;margin-top:16px;color:#94a3b8">strictest finding wins</div>
+</div>
+<div style="position:absolute;left:915px;top:400px;font-size:60px;color:#94a3b8">→</div>
+<div style="position:absolute;left:1000px;top:170px;width:540px;display:flex;flex-direction:column;gap:16px;font-size:24px">
+ <div style="border-left:10px solid #16a34a;background:#f0fdf4;padding:16px 20px;border-radius:10px"><b>Ship as config</b><br><span style="color:#475569;font-size:20px">inside the envelope, shrinks behaviour</span></div>
+ <div style="border-left:10px solid #0d9488;background:#f0fdfa;padding:16px 20px;border-radius:10px"><b>Ship with changelog</b><br><span style="color:#475569;font-size:20px">inside the envelope, changes behaviour</span></div>
+ <div style="border-left:10px solid #ea580c;background:#fff7ed;padding:16px 20px;border-radius:10px"><b>Blocked: missing evidence</b><br><span style="color:#475569;font-size:20px">no version bump, changelog or eval; or eval regressed</span></div>
+ <div style="border-left:10px solid #dc2626;background:#fef2f2;padding:16px 20px;border-radius:10px"><b>New feature: submit for review</b><br><span style="color:#475569;font-size:20px">undeclared tool, data, tier or flag</span></div>
+</div>
+<div style="position:absolute;left:60px;top:740px;width:1480px;border-radius:16px;border:3px solid #dc2626;padding:22px 28px;box-sizing:border-box;font-size:24px">
+ <b style="font-family:Menlo,monospace;color:#dc2626">EnvelopeGuard</b> (in the binary, fails closed): whatever still gets through is filtered against the compiled-in manifest. Undeclared tools, scopes and flags are dropped, and an undeclared model tier falls back to the first declared one.
+</div>
+</body></html>
