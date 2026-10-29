@@ -2,7 +2,7 @@
 
 **Guideline 2.5.19 for AI features: decide which remote changes are configuration and which are new features, and make the binary enforce it.**
 
-Article: (added after publish)
+Article: [Under Guideline 2.5.19, Treat Your Remote AI Prompt Like a Release. Here’s Where I Draw the Line.](https://medium.com/@er.rajatlakhina/under-guideline-2-5-19-treat-your-remote-ai-prompt-like-a-release-heres-where-i-draw-the-line-178e53100e89)
 
 On 16 Oct 2026 Apple added [App Review Guideline 2.5.19](https://developer.apple.com/app-store/review/guidelines/): no hidden, dormant or undocumented features. An AI assistant's behaviour mostly lives on a server (the system prompt, the tool list, the data the model reads, the model tier and the flags), so "the code path was in the binary" is not a useful test. This package uses a different one:
 
@@ -66,7 +66,7 @@ The demo has three tabs: **Changes** (the five scenarios and their findings), **
 
 ## Verification status
 
-- `swift build -Xswiftc -warnings-as-errors` and `swift test` (21 tests, 0 failures) pass on Linux (Swift 6.1.2), and in the `library` CI job on macOS.
+- `swift build -Xswiftc -warnings-as-errors` and `swift test` (21 tests, 0 failures) pass on Linux (Swift 6.1.2), and in the `library` CI job on macOS (macos-15).
 - The `demo-on-simulator` CI job builds `Demo.xcodeproj`, installs it on an iOS Simulator, launches each screen, checks the process is still alive, and saves the screenshots in `Demo/Screenshots/`.
 - The app was not run by hand in a local Xcode.
 
